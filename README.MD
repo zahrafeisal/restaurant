@@ -1,4 +1,4 @@
-# Interactive Restaurant Online App
+# Interactive Online Restaurant App
 
 ## Author
 ### Zahra Feisal
