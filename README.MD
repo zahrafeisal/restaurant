@@ -6,6 +6,7 @@
 ##
 ## About the Project
 The application enables users to view the restaurant's menu as well as make an order.
+API used : db.json file using json-server
 
 ##
 ## Accessing and running the files
