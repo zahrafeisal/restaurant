@@ -93,21 +93,5 @@
       }
     ]
   },
-  "users": [
-    {
-      "id": "e4a8",
-      "name": "",
-      "tel": "",
-      "emailAddress": ""
-    },
-    {
-      "id": "f0bf",
-      "name": "Susan Example",
-      "tel": "0700-000-000",
-      "emailAddress": "zahrafe@gmail.com",
-      "order": [
-        "9 x chicken peri-peri pizza"
-      ]
-    }
-  ]
+  "users": []
 }

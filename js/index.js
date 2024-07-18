@@ -253,9 +253,11 @@ document.addEventListener("DOMContentLoaded", () => {
                       orderSummary.innerHTML = "";
                       contactData.innerHTML = "";
                       ordersContainer.innerHTML = "";
-                      orderDetails = []
+                      orderDetails = [];
                     })
-                    .catch(error => console.error('Error in deletion:', error))
+                    .catch((error) =>
+                      console.error("Error in deletion:", error)
+                    );
                 });
             })
             .catch((error) =>
@@ -268,19 +270,19 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteButton.addEventListener("click", () => {
           contactData.innerHTML = "";
 
-          // added
           const newUserName = document.getElementById("name").value;
           const newPhone = document.getElementById("phone").value;
           const newEmail = document.getElementById("email").value;
 
+          // update user details to be created to users when yes is clicked
           userDetails = {
             name: newUserName,
             tel: newPhone,
-            emailAddress: newEmail
-          }
+            emailAddress: newEmail,
+            order: orderDetails,
+          };
         });
       })
       .catch((error) => console.error("Error posting to users:", error));
-  })
-})
-
+  });
+});
