@@ -1,0 +1,258 @@
+html {
+    font-size: 65%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 6rem;
+}
+
+
+/* styling header section */
+header {
+    background-color: lightgray;
+    position: fixed;
+    box-shadow: 0 .5rem 1rem grey;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;    /* ensures header isnt overlapped by other elements */ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 11%;    /* rem for vertical padding, % for horizontal padding */
+
+}
+header .logo{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 2rem;
+    color: grey;
+}
+header .logo i {
+    color: maroon;
+    padding-right: .5rem;
+}
+.navSection {
+    background-color: lightgray;
+}
+.navSection a {
+    text-decoration: none;
+    padding-right: 19px;
+    font-size: 1.5rem;
+    color: rgb(85, 26, 139);
+}
+.navSection a:hover {
+    color: maroon;
+}
+#menuBar {
+    font-size: 2.5rem;
+    cursor: pointer;
+    border: solid .1rem grey;
+    border-radius: .7rem;
+    padding: .5rem 1.5rem;
+    display: none;
+}
+
+
+/* styling sections */
+section {
+    padding: 2rem 10%;
+}
+
+
+/* styling home section */
+.homeSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+    font-size: 2rem;
+    padding-top: 12rem;
+}
+.sectionHeading {
+    font-size: 3.5rem;
+    padding-bottom: 20px;
+    color: maroon;
+}
+.sectionHeading span {
+    color: rgb(85, 26, 139);
+}
+.homeSection .content {
+    flex: 1 1 40rem;
+}
+.homeSection .foodPic {
+    flex: 1 1 40rem;
+}
+.homeSection .foodPic img {
+    width: 100%;
+    animation: float 4s linear infinite;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0rem);
+    }
+    50% {
+        transform: translateY(4rem);
+    }
+}
+#orderNow {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    background-color: lightgray;
+    border: hidden;
+    color: rgb(85, 26, 139);
+    padding: 13px 20px;
+    transition-duration: 0.2s;
+}
+#orderNow:hover {
+    color: maroon;
+    background-color: gray;
+}
+#orderNow:hover span {
+    padding-right: 25px;
+}
+
+#orderNow:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+#orderNow span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.2s;
+}
+#orderNow span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.2s;
+}
+#orderNow:active {
+    background-color: grey;
+    box-shadow: 0 5px lightslategray;
+    transform: translateY(4px);
+}
+
+/* styling menu section */
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 1rem;
+    padding-top: 4rem;
+}
+
+/* styling order section */
+.orderHeading {
+    font-size: 2.6rem;
+    padding-top: 15px;
+    color: grey;
+}
+#orderForm {
+    font-size: 1.5rem;
+    display: block;
+}
+#orderForm label {
+    display: block;
+    padding-top: 15px;
+    color: rgb(85, 26, 139);
+}
+#orderForm select {
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#orderSubmit {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#orderSubmit:hover {
+    color: maroon;
+}
+#orderDetails {
+    padding-bottom: 30px;
+}
+#contactDetails {
+    padding-bottom: 30px;
+}
+.contactDetails {
+    display: none;
+}
+#contactForm {
+    font-size: 1.5rem;
+    display: block;
+}
+#contactForm label {
+    display: block;
+    padding-top: 15px;
+    color: rgb(85, 26, 139);
+}
+#contactData {
+    padding-bottom: 30px;
+}
+.confirmation button {
+    margin-right: 30px;
+    padding: 8px 15px;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+
+}
+.confirmation p {
+    font-size: 1.8rem;
+}
+#orderSummary {
+    margin-top: 20px;
+}
+#orderSummary p {
+    color: maroon;
+}
+#deleteOrderButton {
+    padding: 8px 15px;
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+/* media queries */
+@media(max-width:743px) {
+    html {
+        font-size: 55%;
+    }
+}
+@media(max-width:530px) {
+    #menuBar {
+        display: initial;
+    }
+    .navSection {
+        position: absolute;
+        top: 100%; right:0; left:0;
+        border-top: solid .1rem grey;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);   /* straight line, hides navigation bar items */
+    }
+    .navSection.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);    /* rectangle, shows my naigation bar items */
+    }
+    .navSection a {
+        margin: 10px;
+        padding: 15px;
+        display: block;
+        border: solid .1rem grey;
+        border-left: solid .5rem maroon;
+    }
+}
+@media(max-width:300px) {
+        html {
+            font-size: 47%;
+        }
+    }

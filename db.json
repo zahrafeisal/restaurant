@@ -1,0 +1,97 @@
+{
+  "menu": {
+    "sandwiches": [
+      {
+        "id": "1",
+        "name": "Beef Burger",
+        "image": "images/beefBurger.jpg",
+        "price": "850",
+        "description": "Served with fries"
+      },
+      {
+        "id": "2",
+        "name": "Chicken Burger",
+        "image": "images/chickenBurger.jpg",
+        "price": "850",
+        "description": "Served with fries"
+      },
+      {
+        "id": "3",
+        "name": "Shawarma",
+        "image": "images/shawarma.jpg",
+        "price": "510",
+        "description": "Served with fries"
+      }
+    ],
+    "pizza": [
+      {
+        "id": "1",
+        "name": "Chicken Peri-Peri",
+        "image": "images/pizza.jpg",
+        "price": "1250",
+        "description": "Served with chicken wings"
+      },
+      {
+        "id": "2",
+        "name": "Chicken Mushroom",
+        "image": "images/chickenMPizza.jpg",
+        "price": "1250",
+        "description": "Served with chicken wings"
+      },
+      {
+        "id": "3",
+        "name": "Hawaiian",
+        "image": "images/hawaiianPizza.jpg",
+        "price": "1310",
+        "description": "Served with chicken wings"
+      }
+    ],
+    "meals": [
+      {
+        "id": "1",
+        "name": "Butter Chicken",
+        "image": "images/butterChicken.jpg",
+        "price": "950",
+        "description": "Served with either rice or naan"
+      },
+      {
+        "id": "2",
+        "name": "Tacos",
+        "image": "images/tacos.jpg",
+        "price": "1390",
+        "description": "Served with salad"
+      },
+      {
+        "id": "3",
+        "name": "Chicken Alfredo",
+        "image": "images/chickenAlfredo1.jpg",
+        "price": "1470",
+        "description": "Served with salad"
+      },
+      {
+        "id": "4",
+        "name": "Cheese Quesadilla",
+        "image": "images/cheeseQuesadilla.jpg",
+        "price": "1550",
+        "description": "Served with fries"
+      }
+    ],
+    "hotDrinks": [
+      {
+        "id": "1",
+        "name": "Fresh Ginger Tea",
+        "image": "images/tea.jpg",
+        "price": "550",
+        "description": "Served with cookies"
+      },
+      {
+        "id": "2",
+        "name": "Dawa",
+        "image": "images/dawa.jpg",
+        "price": "650",
+        "description": "Served with cookies"
+      }
+    ]
+  },
+  "users": []
+}

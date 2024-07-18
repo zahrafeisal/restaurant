@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Restaurant</title>
+        <link rel="stylesheet" href="css/style.css">
+        <!-- link to bootstrap -->
+         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <!-- link to Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!-- link to google fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- style DOM Nodes -->
+        <style>
+            .menuItem {
+                box-shadow: 0 .5rem 1rem grey;
+                position: relative;
+                border: solid .1rem grey;
+                overflow: hidden;
+                flex: 1 1 30rem;
+                cursor: pointer;
+                border-radius: .5rem;
+                text-align: center;
+            }
+            .foodPicMenu {
+                width: 100%;
+                height: 100%;
+            }
+            .menuItemName {
+                color: maroon;
+                padding-top: 10px;
+                box-shadow: 0 .5rem 2rem lightgray;
+            }
+            .menuItemPrice {
+                color: rgb(85, 26, 139);
+                font-size: 1.8rem;
+            }
+            .menuItemDescription {
+                font-size: 1.5rem;
+            }
+            .orderDetailsDescription {
+                font-size: 1.9rem;
+                color: rgb(85, 26, 139);
+            }
+            .show {
+                display: initial;
+            }
+        </style>
+    </head>
+    <body class="poppins-semibold">
+        <header>
+            <a href="#" class="logo"><i class="fas fa-utensils"></i>Restaurant</a>
+            <div id="menuBar" class="fas fa-bars"></div>
+            <nav class="navSection">
+                <a href="#home">home</a>
+                <a href="#menu">menu</a>
+                <a href="#order">order</a>
+                <!-- <a href="#review">review</a> -->
+            </nav>
+        </header>
+
+        <!-- home section -->
+        <section id="home" class="homeSection">
+            <div class="content">
+                <h2 class="sectionHeading">Mouth-watering and irresistible!</h2>
+                <p>Our food is famously known for the rich, savoury and unique tastes, as well as the abundant portions.
+                    Our restaurant is dedicated to maintaining our five-star services while assuring convenience to our
+                    customers.
+                </p>
+                <a href="#order" class="btn"><button type="button" class="btn btn-secondary" id="orderNow"><span>Order Now!</span></button></a>
+            </div>
+            <div class="foodPic">
+                <img src="images/butter chicken white bg.jpg" alt="Butter Chicken">
+            </div>
+        </section>
+        <!-- home section -->
+
+        <!-- menu section -->
+        <section id="menu" class="menuSection">
+            <h2 class="sectionHeading">Our <span>Menu</span></h2>
+            <div id="container">
+                <!-- fetched data will go here -->
+            </div>
+        </section>
+        <!-- menu section -->
+
+        <!-- order section -->
+         <section id="order" class="orderSection">
+            <h2 class="sectionHeading">Ready to <span>order?</span></h2>
+            <h4 class="orderHeading">Order Form</h4>
+            <form id="orderForm">
+                <label for="food">Select below:</label>
+                <label for="sandwiches">Sandwiches</label>
+                <select id="sandwiches" name="sandwiches">
+                    <option value="beef burger">Beef Burger</option>
+                    <option value="chicken burger">Chicken Burger</option>
+                    <option value="shawarma">Shawarma</option>
+                    <input type="number" name="quantity" min="0" value="0" id="sandwichesQty">
+                </select>
+                <label for="pizza">Pizza</label>
+                <select id="pizza" name="pizza">
+                    <option value="chicken peri-peri pizza">Chicken Peri-Peri</option>
+                    <option value="chicken mushroom pizza">Chicken Mushroom</option>
+                    <option value="hawaiian pizza">Hawaiian</option>
+                    <input type="number" name="quantity" min="0" value="0" id="pizzaQty">
+                </select>
+                <label for="meals">Meals</label>
+                <select id="meals" name="meals">
+                    <option value="butter chicken">Butter Chicken</option>
+                    <option value="tacos">Tacos</option>
+                    <option value="chicken alfredo">Chicken Alfredo</option>
+                    <option value="cheese quesadilla">Cheese Quesadilla</option>
+                    <input type="number" name="quantity" min="0" value="0" id="mealsQty">
+                </select>
+                <label for="hotDrinks">Hot Drinks</label>
+                <select id="hotDrinks" name="hotDrinks">
+                    <option value="fresh ginger tea">Fresh Ginger Tea</option>
+                    <option value="dawa">Dawa</option>
+                    <input type="number" name="quantity" min="0" value="0" id="hotDrinksQty">
+                </select>
+                <input type="submit" value="Take Order" id="orderSubmit">
+            </form>
+            <div class="contactDetails">
+                <h4 class="orderHeading">Order Details</h4>
+                <div id="orderDetails">
+                    <!-- order details data will go here -->
+                </div>
+                <h4 class="orderHeading">Contant Details</h4>
+                <div id="contactDetails">
+                    <form id="contactForm">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Susan Example">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="0700-000-000">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="susan.example@example.com">
+                        <input type="submit" value="Save" id="orderSubmit">
+                    </form>
+                </div>
+                <div id="contactData">
+                    <!-- contact details data will go here -->
+                </div>
+                <div class="confirmation">
+                    <p>Is the information above correct?</p>
+                    <button type="button" class="btn btn-secondary" id="yesButton">Yes</button>
+                    <button type="button" class="btn btn-secondary" id="editButton">Edit</button>
+                    <button type="button" class="btn btn-secondary" id="deleteButton">Delete</button>
+
+                </div>
+                <h4 class="orderHeading">Order Summary</h4>
+                <div id="orderSummary">
+                    <!-- order summary will go here -->
+                </div>
+                <button type="button" class="btn btn-secondary" id="deleteOrderButton">Delete</button>
+            </div>
+         </section>
+        <!-- order section -->
+
+        <script src="js/index.js"></script>
+    </body>
+</html>
