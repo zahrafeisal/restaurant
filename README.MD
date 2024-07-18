@@ -33,13 +33,10 @@ Displayed when the user clicks <em>order</em> in the navigation bar or the 'Orde
 Once the form is submitted, the 'Order Details', 'Order Summary' sections and 'Contact Details' form are revealed.
 
 1. The 'Order Details' section displays the details from the order form submittes.
-2. The 'Contact Details' form captures the name, phone number and email of the user. A question will be displayed with 'Yes', 'Edit' and 'Delete' buttons, When clicked; 
+2. The 'Contact Details' form captures the name, phone number and email of the user. A question will be displayed with 'Yes' and 'Delete' buttons, When clicked; 
 
 <ul>
 <li><strong>Yes:</strong> The user's contact details are displayed in the 'Order Summary' section as they are.
-</li>
-<li>
-<strong>Edit:</strong> The 'Contact Details' form is repopulated, enabling users to edit the details. When submitted, the user must click <strong>Yes</strong> to display the information in the 'Order Summary' section.
 </li>
 <li>
 <strong>Delete:</strong> The user's details are deleted permanently.
@@ -61,24 +58,13 @@ When 'Take Order' is clicked, the form is submitted, the class name 'show' is ad
 The array is displayed in the 'Order Details' section.
 
 ### Contact Details
-When submitted, the information is displayed below the form, for the user to double-check. There's a question below, with 'Yes', 'Edit' and 'Delete' buttons. A GET Request is made to the server for the "users" object.
+When submitted, the information is displayed below the form, for the user to double-check. There's a question below, with 'Yes' and 'Delete' buttons. A GET Request is made to the server for the "users" object.
 
 #### 'Yes' button clicked
 A POST Request is made to the "users" object within the second promise after the GET Request. An object containing the contact details and order details is created. On the frontend, the same data is added to the 'Order Summary' section.
 
-#### 'Edit' button clicked
-A GET Request is made to the <strong>specific</strong> user object using the id. In the second promise;
-
-##### Frontend
-1. The contact form is repopulated, enabling the user to edit the details and save changes.
-2. After submission, the user is requires to click the 'Yes' button so that the new contact information is rendered on the 'Order Summary' section.
-
-##### Backend
-1. A PATCH Request is made to the user object, updating the information to the edited value(s).
-2. When 'Yes' is clicked, the updated information is rendered on the 'Order Summary' section from the server.
-
 #### 'Delete' button clciked
-The contact details is cleared on the frontend, above the confirmation question. Nothing is communicated to the server.
+The contact details is cleared on the frontend, above the confirmation question. The user details to be created to the server are updated.
 
 ### Order Summary
 Renderes the order details of the specific user.

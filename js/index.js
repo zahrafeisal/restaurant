@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     contactForm.reset();
 
-    const userDetails = {
+    let userDetails = {
       name: userName,
       tel: phone,
       emailAddress: email,
@@ -188,14 +188,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // update users in db.json file
     fetch("http://localhost:3000/users")
       .then((resp) => resp.json()) // GET Request, READ
-      .then((user) => {
-        const userId = user.id;
-
-        // Delete contact info frontend
-        const deleteButton = document.getElementById("deleteButton");
-        deleteButton.addEventListener("click", () => {
-          contactData.innerHTML = "";
-        });
+      .then(() => {
+        // const userId = user.id;
 
         // CREATE user object in 'users'
         const yesButton = document.getElementById("yesButton");
@@ -259,10 +253,9 @@ document.addEventListener("DOMContentLoaded", () => {
                       orderSummary.innerHTML = "";
                       contactData.innerHTML = "";
                       ordersContainer.innerHTML = "";
+                      orderDetails = []
                     })
-                    .catch((error) =>
-                      console.error("Error deleting user from db.json:", error)
-                    );
+                    .catch(error => console.error('Error in deletion:', error))
                 });
             })
             .catch((error) =>
@@ -270,85 +263,24 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         });
 
-        // Edit order summary
-        const editButton = document
-          .getElementById("editButton")
-          .addEventListener("click", () => {
-            contactData.innerHTML = "";
-            fetch(`http://localhost:3000/users/${userId}`) // GET Request, READ
-              .then((resp) => {
-                if (!resp.ok) {
-                  throw new Error("Response was not okay");
-                }
-                return resp.json();
-              })
-              .then((userData) => {
-                document.getElementById("name").value = userData.name;
-                document.getElementById("phone").value = userData.tel;
-                document.getElementById("email").value = userData.emailAddress;
+        // Delete contact info frontend
+        const deleteButton = document.getElementById("deleteButton");
+        deleteButton.addEventListener("click", () => {
+          contactData.innerHTML = "";
 
-                contactForm.addEventListener("submit", (event) => {
-                  event.preventDefault();
+          // added
+          const newUserName = document.getElementById("name").value;
+          const newPhone = document.getElementById("phone").value;
+          const newEmail = document.getElementById("email").value;
 
-                  const newUserName = document.getElementById("name").value;
-                  const newUserPhone = document.getElementById("phone").value;
-                  const newUserEmail = document.getElementById("email").value;
-
-                  // UPDATE User info
-                  fetch(`http://localhost:3000/users/${userId}`, {
-                    method: "PATCH", // PATCH Request, UPDATE
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      name: newUserName,
-                      tel: newUserPhone,
-                      emailAddress: newUserEmail,
-                    }),
-                  })
-                    .then((resp) => {
-                      if (!resp.ok) {
-                        throw new Error("Patch response was not okay");
-                      }
-                      return resp.json();
-                    })
-                    .then((userData) => {
-                      orderSummary.innerHTML = "";
-
-                      const newUserNameP = document.createElement("p");
-                      newUserNameP.textContent = `Name: ${userData.name}`;
-                      newUserNameP.classList.add("orderDetailsDescription");
-
-                      const newPhoneP = document.createElement("p");
-                      newPhoneP.textContent = `Phone Number : ${userData.tel}`;
-                      newPhoneP.classList.add("orderDetailsDescription");
-
-                      const newEmailP = document.createElement("p");
-                      newEmailP.textContent = `Email Address : ${userData.emailAddress}`;
-                      newEmailP.classList.add("orderDetailsDescription");
-
-                      const newOrderP = document.createElement("p");
-                      newOrderP.textContent = `Order Details : ${userData.order}`;
-                      newOrderP.classList.add("orderDetailsDescription");
-
-                      contactData.append(newUserNameP, newPhoneP, newEmailP);
-                      orderSummary.append(
-                        newUserNameP,
-                        newPhoneP,
-                        newEmailP,
-                        newOrderP
-                      );
-                    })
-                    .catch((error) =>
-                      console.error("Error updating user info:", error)
-                    );
-                });
-              })
-              .catch((error) =>
-                console.error("Error fetching user data :", error)
-              );
-          });
+          userDetails = {
+            name: newUserName,
+            tel: newPhone,
+            emailAddress: newEmail
+          }
+        });
       })
       .catch((error) => console.error("Error posting to users:", error));
-  });
-});
+  })
+})
+
