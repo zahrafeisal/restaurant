@@ -158,9 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const userName = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const email = document.getElementById("email").value;
+    let userName = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
 
     const nameP = document.createElement("p");
     nameP.textContent = `Name : ${userName}`;
@@ -185,12 +185,25 @@ document.addEventListener("DOMContentLoaded", () => {
       order: orderDetails,
     };
 
+    // Delete contact info frontend
+    const deleteButton = document.getElementById("deleteButton");
+    deleteButton.addEventListener("click", () => {
+      contactData.innerHTML = "";
+
+      let newUserName = document.getElementById("name").value;
+      let newPhone = document.getElementById("phone").value;
+      let newEmail = document.getElementById("email").value;
+
+      // update user details to be created to users when yes is clicked
+      userDetails.name = newUserName
+      userDetails.tel = newPhone
+      userDetails.emailAddress = newEmail
+    });
+
     // update users in db.json file
     fetch("http://localhost:3000/users")
       .then((resp) => resp.json()) // GET Request, READ
       .then(() => {
-        // const userId = user.id;
-
         // CREATE user object in 'users'
         const yesButton = document.getElementById("yesButton");
         yesButton.addEventListener("click", () => {
@@ -263,24 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch((error) =>
               console.error("Error fetching user data:", error)
             );
-        });
-
-        // Delete contact info frontend
-        const deleteButton = document.getElementById("deleteButton");
-        deleteButton.addEventListener("click", () => {
-          contactData.innerHTML = "";
-
-          const newUserName = document.getElementById("name").value;
-          const newPhone = document.getElementById("phone").value;
-          const newEmail = document.getElementById("email").value;
-
-          // update user details to be created to users when yes is clicked
-          userDetails = {
-            name: newUserName,
-            tel: newPhone,
-            emailAddress: newEmail,
-            order: orderDetails,
-          };
         });
       })
       .catch((error) => console.error("Error posting to users:", error));
