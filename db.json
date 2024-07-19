@@ -93,24 +93,5 @@
       }
     ]
   },
-  "users": [
-    {
-      "id": "030a",
-      "name": "",
-      "tel": "",
-      "emailAddress": "",
-      "order": [
-        "7 x butter chicken"
-      ]
-    },
-    {
-      "id": "ec12",
-      "name": "Lee Yong",
-      "tel": "0700-000-000",
-      "emailAddress": "zahrafesail3@gmail.com",
-      "order": [
-        "7 x butter chicken"
-      ]
-    }
-  ]
+  "users": []
 }
