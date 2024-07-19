@@ -93,5 +93,16 @@
       }
     ]
   },
-  "users": []
+  "users": [
+    {
+      "id": "3bda",
+      "name": "John Doe",
+      "tel": "0712-345-678",
+      "emailAddress": "johndoe@example.com",
+      "order": [
+        "3 x chicken peri-peri pizza",
+        "1 x fresh ginger tea"
+      ]
+    }
+  ]
 }
