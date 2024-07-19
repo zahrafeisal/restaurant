@@ -48,8 +48,6 @@ Once the form is submitted, the 'Order Details', 'Order Summary' sections and 'C
 ##
 ## How the code runs - Order Section
 
-The "users" object in the <em>db.json</em> file is initially cleared of previous users when the window loads, to prevent saving sensitive information to other users. A DELETE Request is made for each user.
-
 ### Order Form
 Captures the user's order items and corresponding quantities and pushes them to the 'orderDetails' array.
 

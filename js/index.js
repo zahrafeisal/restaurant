@@ -10,39 +10,6 @@ const contactData = document.getElementById("contactData");
 const orderSummary = document.getElementById("orderSummary");
 let orderDetails = [];
 
-// prevent users from obtaining previous users' info
-window.onload = () => deleteUsers();
-
-// clear other users in server when page loads
-function deleteUsers() {
-  fetch("http://localhost:3000/users") // GET Request, READ
-    .then((resp) => {
-      if (!resp.ok) {
-        throw new Error("Cannot fetch initial users");
-      } else {
-        return resp.json();
-      }
-    })
-    .then((users) => {
-      users.forEach((user) => {
-        fetch(`http://localhost:3000/users/${user.id}`, {
-          // DELETE Request, DELETE
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((resp) => {
-            if (!resp.ok) {
-              console.log("Error deleting users:", resp.statusText);
-            }
-          })
-          .catch((error) => console.error("Error deleting users:", error));
-      });
-    })
-    .catch((error) => console.error("Error deleting initial users:", error));
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   // fetch items from server and display them to menu section
   fetch("http://localhost:3000/menu") // GET Request, READ
