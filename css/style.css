@@ -4,6 +4,11 @@ html {
     scroll-padding-top: 6rem;
     scroll-behavior: smooth;
 }
+body {
+    background: url(../images/gold-marbled-pattern_53876-88811.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
 .poppins-semibold {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
@@ -144,35 +149,43 @@ section {
 #container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 3rem;
     font-size: 1rem;
-    padding-top: 4rem;
+    padding-top: 3rem;
 }
 
 /* styling order section */
 .orderHeading {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     padding-top: 15px;
     color: grey;
 }
 #orderForm {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     display: block;
+    margin-bottom: 20px;
 }
 #orderForm label {
+    font-size: 1.8rem;
     display: block;
     padding-top: 15px;
     color: rgb(85, 26, 139);
 }
-#orderForm select {
-    display: flex;
+#orderForm input {
     margin-bottom: 10px;
     margin-top: 10px;
 }
+.suggestions p {
+    color: gray;
+    cursor: pointer;
+    font-style: italic;
+}
+.suggestions p:hover {
+    color: maroon;
+}
 #orderSubmit {
     display: block;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 30px;
 }
 #orderSubmit:hover {
     color: maroon;
@@ -187,10 +200,11 @@ section {
     display: none;
 }
 #contactForm {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     display: block;
 }
 #contactForm label {
+    font-size: 1.8rem;
     display: block;
     padding-top: 15px;
     color: rgb(85, 26, 139);

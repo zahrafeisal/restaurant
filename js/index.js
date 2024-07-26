@@ -8,7 +8,26 @@ const contactDetailsMainDiv = document.querySelector(".contactDetails");
 const contactForm = document.getElementById("contactForm");
 const contactData = document.getElementById("contactData");
 const orderSummary = document.getElementById("orderSummary");
+const foodItemInput = document.getElementById("orders");
+const suggestionsContainer = document.querySelector('.suggestions');
 let orderDetails = [];
+
+window.addEventListener('load', () => {
+  fetch('http://localhost:3000/users')
+  .then(resp => resp.json())
+  .then(users => {
+    users.forEach(user => {
+      fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'apllication/json'
+        }
+      })
+      .then(resp => resp.json())
+      .then(users => console.log(users))
+    })
+  })
+})
 
 document.addEventListener("DOMContentLoaded", () => {
   // fetch items from server and display them to menu section
@@ -52,6 +71,31 @@ document.addEventListener("DOMContentLoaded", () => {
       displayMenuItems(menu.pizza);
       displayMenuItems(menu.meals);
       displayMenuItems(menu.hotDrinks);
+
+      // suggests menu items to users as they type, avoid them inputting unavailable items
+      const allMenu = [].concat(...Object.values(menu)).map(item => item.name)
+
+      foodItemInput.addEventListener('input', () => {
+        const order = foodItemInput.value.toLowerCase();
+        suggestionsContainer.innerHTML = ''
+
+        if (order) {
+          const suggestions = allMenu.filter(item => item.toLowerCase().includes(order));
+
+          suggestions.forEach(suggestion => {
+            const p = document.createElement('p')
+            p.textContent = `↖ ${suggestion}`
+
+            suggestionsContainer.appendChild(p)
+
+            p.addEventListener('click', () => {
+              foodItemInput.value = suggestion;
+
+              suggestionsContainer.innerHTML = ''
+            })
+          })
+        }
+      })
     })
     .catch((error) =>
       console.error("error fetching initial menu data:", error)
@@ -75,38 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     contactDetailsMainDiv.classList.add("show"); // enable users to input contacts & view order details and summary after submitting
 
-    const sandwiches = document.getElementById("sandwiches").value;
-    const sandwichesQty = parseInt(
-      document.getElementById("sandwichesQty").value,
-      10
-    );
+    const foodItem = document.getElementById("orders").value;
+    const foodQty = parseInt(document.getElementById("quantity").value, 10);
 
-    const pizza = document.getElementById("pizza").value;
-    const pizzaQty = parseInt(document.getElementById("pizzaQty").value, 10);
-
-    const meals = document.getElementById("meals").value;
-    const mealsQty = parseInt(document.getElementById("mealsQty").value, 10);
-
-    const hotDrinks = document.getElementById("hotDrinks").value;
-    const hotDrinksQty = parseInt(
-      document.getElementById("hotDrinksQty").value,
-      10
-    );
-
-    if (sandwichesQty > 0) {
-      orderDetails.push(`${sandwichesQty} x ${sandwiches}`);
-    }
-
-    if (pizzaQty > 0) {
-      orderDetails.push(`${pizzaQty} x ${pizza}`);
-    }
-
-    if (mealsQty > 0) {
-      orderDetails.push(`${mealsQty} x ${meals}`);
-    }
-
-    if (hotDrinksQty > 0) {
-      orderDetails.push(`${hotDrinksQty} x ${hotDrinks}`);
+    if (foodQty > 0) {
+      orderDetails.push(`${foodQty} x ${foodItem}`);
     }
 
     ordersContainer.innerHTML = "";
@@ -166,6 +183,41 @@ document.addEventListener("DOMContentLoaded", () => {
       userDetails.tel = newPhone
       userDetails.emailAddress = newEmail
     });
+
+    // Edit contact info on frontent
+    // const editButton = document.getElementById('editButton');
+    // editButton.addEventListener("click", () => {
+    //   const nameEdit = document.createElement('input');
+    //   nameEdit.type = 'text'
+
+    //   const phoneEdit = document.createElement('input');
+    //   phoneEdit.type = 'tel'
+    //   phoneEdit.pattern = '[0-9]{4}-[0-9]{3}-[0-9]{3}';
+
+    //   const emailEdit = document.createElement('input')
+    //   emailEdit.type = 'email'
+
+    //   if (contactData.classList.contains('editMode')) {
+    //     nameP.textContent = `Name : ${nameEdit.value}`;
+    //     phoneP.textContent = `Phone number : ${phoneEdit.value}`;
+    //     emailP.textContent = `Email Address : ${emailEdit.value}`;
+
+    //     editButton.textContent = 'Edit'
+
+    //     contactData.remove(nameEdit, phoneEdit, emailEdit)
+    //   } else {
+    //     contactData.innerHTML = ''
+
+    //     nameEdit.value = nameP.textContent
+    //     phoneEdit.value = phoneP.textContent
+    //     emailEdit.value = emailP.textContent
+
+    //     editButton.textContent = 'Save'
+
+    //     contactData.append(nameEdit, phoneEdit, emailEdit)
+    //   }
+    //   contactData.classList.toggle('editMode')
+    // })
 
     // update users in db.json file
     fetch("http://localhost:3000/users")
