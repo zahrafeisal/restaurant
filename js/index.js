@@ -185,39 +185,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Edit contact info on frontent
-    // const editButton = document.getElementById('editButton');
-    // editButton.addEventListener("click", () => {
-    //   const nameEdit = document.createElement('input');
-    //   nameEdit.type = 'text'
+    const editButton = document.getElementById('editButton');
+    editButton.addEventListener("click", () => {
+      if (contactData.classList.contains('editMode')) {
+        let newName = document.querySelector('.nameEdit').value
+        let newTel = document.querySelector('.phoneEdit').value
+        let newMail = document.querySelector('.emailEdit').value
 
-    //   const phoneEdit = document.createElement('input');
-    //   phoneEdit.type = 'tel'
-    //   phoneEdit.pattern = '[0-9]{4}-[0-9]{3}-[0-9]{3}';
+        nameP.textContent = `Name : ${newName}`;
+        phoneP.textContent = `Phone number : ${newTel}`;
+        emailP.textContent = `Email Address : ${newMail}`;
 
-    //   const emailEdit = document.createElement('input')
-    //   emailEdit.type = 'email'
+        editButton.textContent = 'Edit'
 
-    //   if (contactData.classList.contains('editMode')) {
-    //     nameP.textContent = `Name : ${nameEdit.value}`;
-    //     phoneP.textContent = `Phone number : ${phoneEdit.value}`;
-    //     emailP.textContent = `Email Address : ${emailEdit.value}`;
+        // update user details to be created to users when yes is clicked
+        userDetails.name = newName
+        userDetails.tel = newTel
+        userDetails.emailAddress = newMail
 
-    //     editButton.textContent = 'Edit'
+        contactData.innerHTML = ''
+        contactData.append(nameP, phoneP, emailP)
+      } else {
+        contactData.innerHTML = ''
 
-    //     contactData.remove(nameEdit, phoneEdit, emailEdit)
-    //   } else {
-    //     contactData.innerHTML = ''
+        const nameEdit = document.createElement('input');
+        nameEdit.type = 'text'
+        nameEdit.classList.add("contactInputs", 'nameEdit');
 
-    //     nameEdit.value = nameP.textContent
-    //     phoneEdit.value = phoneP.textContent
-    //     emailEdit.value = emailP.textContent
+        const phoneEdit = document.createElement('input');
+        phoneEdit.type = 'tel'
+        phoneEdit.pattern = '[0-9]{4}-[0-9]{3}-[0-9]{3}';
+        phoneEdit.classList.add("contactInputs", 'phoneEdit');
 
-    //     editButton.textContent = 'Save'
+        const emailEdit = document.createElement('input')
+        emailEdit.type = 'email'
+        emailEdit.classList.add("contactInputs", 'emailEdit');
 
-    //     contactData.append(nameEdit, phoneEdit, emailEdit)
-    //   }
-    //   contactData.classList.toggle('editMode')
-    // })
+        nameEdit.value = userName
+        phoneEdit.value = phone
+        emailEdit.value = email
+
+        editButton.textContent = 'Save'
+
+        contactData.append(nameEdit, phoneEdit, emailEdit)
+      }
+      contactData.classList.toggle('editMode')
+    })
 
     // update users in db.json file
     fetch("http://localhost:3000/users")

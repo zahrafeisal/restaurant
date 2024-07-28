@@ -199,8 +199,11 @@ section {
 .contactDetails {
     display: none;
 }
-#contactForm {
-    font-size: 1.9rem;
+#contactForm input {
+    font-size: 1.7rem;
+    width: 25%;
+    height: 40%;
+    padding: 10px;
     display: block;
 }
 #contactForm label {
@@ -208,6 +211,13 @@ section {
     display: block;
     padding-top: 15px;
     color: rgb(85, 26, 139);
+}
+#contactForm #orderSubmit {
+    font-size: 1.9rem;
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 2px 5px;
 }
 #contactData {
     padding-bottom: 30px;
